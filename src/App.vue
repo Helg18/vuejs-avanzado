@@ -17,6 +17,7 @@
       <br>
 
       <div class="container">
+        <p>{{ getTotals }}</p>
         <div class="tile is-ancestor" v-for="track in tracks">
           <div class="tile is-parent is-inline-block">
             <article class="tile is-child box columns">
@@ -55,6 +56,11 @@ export default {
     return {
       searchQuery: '',
       tracks: []
+    }
+  },
+  computed: {
+    getTotals () {
+      return `Encontrados ${this.tracks.length} elementos`
     }
   },
   methods: {
