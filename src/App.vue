@@ -22,11 +22,17 @@
           <div class="tile is-parent is-inline-block">
             <article class="tile is-child box columns">
               <figure>
-                <img src="https://picsum.photos/100/100/?random" alt="">
+                <img v-bind:src="track.album.images[1].url" v-bind:alt="track.name" height="180px" width="180px">
               </figure>
               <div class="column">
                 <p class="title">{{track.name}}</p>
-                <p class="subtitle">{{track.artist}}</p>
+                <p class="subtitle">{{track.artists[0].name}}</p>
+                <p class="small">Preview
+                  <audio controls>
+                    <source v-bind:src="track.preview_url" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                  </audio>
+                </p><br>
               </div>
             </article>
           </div>
@@ -38,34 +44,31 @@
 </template>
 
 <script>
-const tracks = [
-  { name: 'A donde vayas', artist: 'Alex Bueno' },
-  { name: 'A donde vayas', artist: 'Alex Bueno' },
-  { name: 'A donde vayas', artist: 'Alex Bueno' },
-  { name: 'A donde vayas', artist: 'Alex Bueno' },
-  { name: 'Hard to say Im sorry', artist: 'Chicago' },
-  { name: 'Hard to say Im sorry', artist: 'Chicago' },
-  { name: 'Hard to say Im sorry', artist: 'Chicago' },
-  { name: 'Hard to say Im sorry', artist: 'Chicago' },
-  { name: 'Its must been love', artist: 'Roxette' }
-]
+import trackService from './services/track'
 
 export default {
   name: 'app',
   data () {
     return {
       searchQuery: '',
-      tracks: []
+      tracks: [],
+      total: 0
     }
   },
   computed: {
     getTotals () {
-      return `Encontrados ${this.tracks.length} elementos`
+      return `Encontrados ${this.total} elementos`
     }
   },
   methods: {
     search () {
-      this.tracks = tracks
+      if (this.searchQuery === '') { return }
+
+      trackService.search(this.searchQuery)
+        .then(res => {
+          this.total = res.tracks.total
+          this.tracks = res.tracks.items
+        })
     },
     clear () {
       this.searchQuery = ''
