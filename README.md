@@ -1,8 +1,8 @@
 # PlatziMusic
 
-> Se consume una api musical para los detalles de musicas, se utiliza trae, bulma-css y otros recursos instalables desde el npm
+Se consume una api musical para los detalles de musicas, se utiliza trae, bulma-css y otros recursos instalables desde el npm
 
-Este es un proyecto que nacio de un curso de  :tada: PLATZI :tada:
+> Este es un proyecto que nacio de un curso de  :tada: PLATZI :tada:
 
 ## Mira el comportamiento de la app aqui
 
@@ -21,9 +21,8 @@ npm run dev
 npm run build
 ```
 
-
-## Licensia GPL
-
-# Desarrollador
+## Desarrollador
 Henry Leon
 Helg18@gmail.com
+
+## Licencia GPL
