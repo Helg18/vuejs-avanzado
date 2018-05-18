@@ -2,6 +2,8 @@
 
 > Se consume una api musical para los detalles de musicas, se utiliza trae, bulma-css y otros recursos instalables desde el npm
 
+Este es un proyecto que nacio de un curso de  :tada: PLATZI :tada:
+
 ## Mira el comportamiento de la app aqui
 
 > https://helg18.github.io/vuejs-avanzado/index.html
