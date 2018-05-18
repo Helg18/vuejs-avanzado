@@ -1,8 +1,12 @@
-# platzimusic
+# PlatziMusic
 
-> A Vue.js project
+> Se consume una api musical para los detalles de musicas, se utiliza trae, bulma-css y otros recursos instalables desde el npm
 
-## Build Setup
+## Mira el comportamiento de la app aqui
+
+> https://helg18.github.io/vuejs-avanzado/index.html
+
+## Preparacion
 
 ``` bash
 # install dependencies
@@ -15,4 +19,9 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Licensia GPL
+
+# Desarrollador
+Henry Leon
+Helg18@gmail.com
