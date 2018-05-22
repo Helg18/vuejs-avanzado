@@ -20,6 +20,9 @@
         <p>{{ getTotals }}</p><br>
       </div>
 
+      <div v-if="isLoading">
+        <pm-loader></pm-loader>
+      </div>
       <div class="container">
         <div class="columns is-multiline">
           <div class="column is-4" v-for="track in tracks">
@@ -37,16 +40,18 @@
 import trackService from './services/track'
 import PmFooter from './components/layouts/Footer.vue'
 import PmHeader from './components/layouts/Header.vue'
+import PmLoader from './components/layouts/Loader.vue'
 import PmTrack from './components/Track.vue'
 
 export default {
   name: 'app',
-  components: { PmFooter, PmHeader, PmTrack },
+  components: { PmFooter, PmHeader, PmTrack, PmLoader },
   data () {
     return {
       searchQuery: '',
       tracks: [],
-      total: 0
+      total: 0,
+      isLoading: false
     }
   },
   computed: {
@@ -57,15 +62,19 @@ export default {
   methods: {
     search () {
       if (this.searchQuery === '') { return }
-
+      this.isLoading = true
       trackService.search(this.searchQuery)
         .then(res => {
           this.total = res.tracks.total
           this.tracks = res.tracks.items
+          this.isLoading = false
         })
     },
     clear () {
       this.searchQuery = ''
+      this.tracks = []
+      this.total = 0
+      this.isLoading = false
     }
   }
 }
