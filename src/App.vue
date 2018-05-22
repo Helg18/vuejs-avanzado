@@ -16,26 +16,14 @@
         </div>
       </nav>
       <br>
+      <div class="container">
+        <p>{{ getTotals }}</p><br>
+      </div>
 
       <div class="container">
-        <p>{{ getTotals }}</p>
-        <div class="tile is-ancestor" v-for="track in tracks">
-          <div class="tile is-parent is-inline-block">
-            <article class="tile is-child box columns">
-              <figure>
-                <img v-bind:src="track.album.images[1].url" v-bind:alt="track.name" height="180px" width="180px">
-              </figure>
-              <div class="column">
-                <p class="title">{{track.name}}</p>
-                <p class="subtitle">{{track.artists[0].name}}</p>
-                <p class="small">Preview
-                  <audio controls>
-                    <source v-bind:src="track.preview_url" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
-                </p><br>
-              </div>
-            </article>
+        <div class="columns is-multiline">
+          <div class="column is-4" v-for="track in tracks">
+            <pm-track :track="track"></pm-track>
           </div>
         </div>
       </div>
@@ -49,10 +37,11 @@
 import trackService from './services/track'
 import PmFooter from './components/layouts/Footer.vue'
 import PmHeader from './components/layouts/Header.vue'
+import PmTrack from './components/Track.vue'
 
 export default {
   name: 'app',
-  components: { PmFooter, PmHeader },
+  components: { PmFooter, PmHeader, PmTrack },
   data () {
     return {
       searchQuery: '',
