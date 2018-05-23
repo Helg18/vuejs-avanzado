@@ -23,10 +23,10 @@
       <div v-if="isLoading">
         <pm-loader></pm-loader>
       </div>
-      <div class="container">
+      <div class="container" v-else>
         <div class="columns is-multiline">
           <div class="column is-4" v-for="track in tracks">
-            <pm-track :track="track"></pm-track>
+            <pm-track :track="track" @selectedTrack="setSelectedTrack" :class="{ 'is-selected' : track.id === selectedTrack }"></pm-track>
           </div>
         </div>
       </div>
@@ -51,7 +51,8 @@ export default {
       searchQuery: '',
       tracks: [],
       total: 0,
-      isLoading: false
+      isLoading: false,
+      selectedTrack: ''
     }
   },
   computed: {
@@ -75,6 +76,9 @@ export default {
       this.tracks = []
       this.total = 0
       this.isLoading = false
+    },
+    setSelectedTrack (id) {
+      this.selectedTrack = id
     }
   }
 }
@@ -85,5 +89,9 @@ export default {
 
 .margin10 {
   margin: 10px;
+}
+
+.is-selected {
+  border: 3px #23d160 solid;
 }
 </style>

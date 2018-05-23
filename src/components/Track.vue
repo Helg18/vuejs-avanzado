@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="selected">
     <div class="card-image">
       <figure class="image 1by1">
         <img v-bind:src="track.album.images[1].url" v-bind:alt="track.name" width="60px" height="60px">
@@ -39,6 +39,11 @@
   export default {
     props: {
       track: { type: Object, required: true }
+    },
+    methods: {
+      selected () {
+        this.$emit('selectedTrack', this.track.id)
+      }
     }
   }
 </script>

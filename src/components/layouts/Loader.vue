@@ -2,7 +2,7 @@
 	<div class="loader">Loading...</div>
 </template>
 
-<style type="text/css">
+<style type="text/css" scoped>
 .loader,
 .loader:before,
 .loader:after {
